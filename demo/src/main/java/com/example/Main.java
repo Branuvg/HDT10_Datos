@@ -40,6 +40,21 @@ public class Main {
         System.out.println(grafo.centroGrafo());
     }
 
+    // Método para modificar el grafo según la entrada del usuario
+    private static void modificarGrafo(Grafico grafo) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese la ciudad de origen: ");
+        String ciudad1 = scanner.nextLine();
+        System.out.print("Ingrese la ciudad de destino: ");
+        String ciudad2 = scanner.nextLine();
+        System.out.print("Ingrese la distancia entre las ciudades (en KM): ");
+        int distancia = scanner.nextInt();
+        // Modificar la conexión en el grafo
+        grafo.modificarConexion(ciudad1, ciudad2, distancia);
+        System.out.println("Modificación realizada.");
+    }
+    
+
     private static void mostrarMenu() {
         System.out.println("Opciones:");
         System.out.println("1. Calcular ruta más corta entre dos ciudades.");
@@ -71,7 +86,7 @@ public class Main {
                     calcularCentroGrafo(grafo);
                     break;
                 case 3:
-                    //modificarGrafo(grafo);
+                    modificarGrafo(grafo);
                     break;
                 case 4:
                     salir = true;

@@ -104,4 +104,34 @@ public class Grafico {
         }
         return "El centro del grafo es: " + centro;
     }
+
+    // Método para modificar la conexión entre dos ciudades
+    public void modificarConexion(String ciudad1, String ciudad2, int distancia) {
+        // Verificar si la conexión existe y modificarla
+        if (juntados.containsKey(ciudad1) && juntados.get(ciudad1).containsKey(ciudad2)) {
+            juntados.get(ciudad1).put(ciudad2, distancia);
+        } else {
+            System.out.println("La conexión entre " + ciudad1 + " y " + ciudad2 + " no existe.");
+        }
+    }
+    
+    // Método para mostrar la matriz de adyacencia del grafo
+    public void MatrizAdyacente() {
+        System.out.println("Matriz de adyacencia:");
+        System.out.print("\t");
+        // Imprimir las ciudades en la primera fila
+        for (String ciudad : obtenerCiudades()) {
+            System.out.print(ciudad + "\t");
+        }
+        System.out.println();
+        // Imprimir la distancia entre las ciudades
+        for (String ciudadOrigen : obtenerCiudades()) {
+            System.out.print(ciudadOrigen + "\t");
+            for (String ciudadDestino : obtenerCiudades()) {
+                int distancia = obtenerDistancia(ciudadOrigen, ciudadDestino);
+                System.out.print((distancia == Integer.MAX_VALUE ? "-" : distancia) + "\t");
+            }
+            System.out.println();
+        }
+    }
 }
