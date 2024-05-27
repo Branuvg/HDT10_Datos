@@ -85,4 +85,23 @@ public class Grafico {
         juntados.putIfAbsent(ciudad2, new HashMap<String, Integer>());
         juntados.get(ciudad1).put(ciudad2, distancia);
     }
+
+    // Método para calcular la ciudad que queda en el centro del grafo
+    public String centroGrafo() {
+        String centro = null;
+        int menorDistancia = Integer.MAX_VALUE;
+        for (String ciudad : obtenerCiudades()) {
+            int mayorDistancia = 0;
+            for (String otraCiudad : obtenerCiudades()) {
+                if (!ciudad.equals(otraCiudad)) {
+                    mayorDistancia = Math.max(mayorDistancia, obtenerDistancia(ciudad, otraCiudad));
+                }
+            }
+            if (menorDistancia > mayorDistancia) {
+                menorDistancia = mayorDistancia;
+                centro = ciudad;
+            }
+        }
+        return "El centro del grafo es: " + centro;
+    }
 }

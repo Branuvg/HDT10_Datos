@@ -35,6 +35,11 @@ public class Main {
         System.out.println(grafo.rutaMasCorta(origen, destino));
     }
 
+    // Método para calcular y mostrar la ciudad que queda en el centro del grafo
+    private static void calcularCentroGrafo(Grafico grafo) {
+        System.out.println(grafo.centroGrafo());
+    }
+
     private static void mostrarMenu() {
         System.out.println("Opciones:");
         System.out.println("1. Calcular ruta más corta entre dos ciudades.");
@@ -63,7 +68,7 @@ public class Main {
                     calcularRutaMasCorta(grafo);
                     break;
                 case 2:
-                    //calcularCentroGrafo(grafo);
+                    calcularCentroGrafo(grafo);
                     break;
                 case 3:
                     //modificarGrafo(grafo);
